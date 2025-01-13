@@ -1,7 +1,7 @@
 import { statusClasses, CharStatus } from "../shared/types";
 
 interface Key {
-  status: CharStatus;
+  status?: CharStatus;
   value: string;
 }
 

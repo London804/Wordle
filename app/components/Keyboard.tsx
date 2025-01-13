@@ -74,9 +74,7 @@ export const Keyboard = ({onEnter, onDelete, onChar, guesses}: KeyboardProps) =>
         <Key value="L" status={charStatuses["L"]} />
       </div> 
       <div className="flex justify-center">
-        <Key width={75} value="Enter">
-          Enter
-        </Key>
+        <Key value="Enter"></Key>
         <Key value="Z" status={charStatuses["Z"]}/>
         <Key value="X" status={charStatuses["X"]}/>
         <Key value="C" status={charStatuses["C"]} />
@@ -84,9 +82,7 @@ export const Keyboard = ({onEnter, onDelete, onChar, guesses}: KeyboardProps) =>
         <Key value="B" status={charStatuses["B"]}/>
         <Key value="N" status={charStatuses["N"]}/>
         <Key value="M" status={charStatuses["M"]}/>
-        <Key width={75} value="Delete">
-          Delete
-        </Key>
+        <Key value="Delete"></Key>
       </div>
     </div>
 
