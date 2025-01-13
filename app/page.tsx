@@ -60,10 +60,6 @@ export default function Home() {
     setGuesses([])
     setCurrentGuess('')
   }
-
-  useEffect(() => {
-    console.log("guesses", guesses)
-  },[guesses])
   
 
   return (
