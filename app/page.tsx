@@ -1,10 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Grid } from "./components/Grid";
 import { isWinningWord, solution} from "./utilities/words";
 import { Keyboard } from "./components/Keyboard";
 import { WORDS } from "./constants/wordlist";
+
+import { Button } from "@/components/ui/button"
+import {
+  Dialog,
+  DialogContent,
+  DialogClose,
+  DialogDescription,
+  DialogHeader,
+  DialogOverlay,
+  DialogTitle,
+  DialogTrigger,
+  DialogFooter,
+} from "@/components/ui/dialog"
+import { Input } from "postcss";
+
 
 export default function Home() {
   const [currentGuess, setCurrentGuess] = useState('')
@@ -64,7 +79,7 @@ export default function Home() {
 
   return (
     <div>
-      <main className="min-h-screen flex justify-center p-8">
+      <main className="flex flex-col justify-center p-8">
         <div className="">
           <div className="h-16 text-center">
             {
@@ -100,10 +115,63 @@ export default function Home() {
               guesses={guesses}
             />
         </div>
+        <div className="flex justify-center mt-16">
+          <div className="absolute">
+           <Dialog>
+            <DialogTrigger asChild>
+              <Button>How to play</Button>
+            </DialogTrigger>
+            <DialogOverlay className="fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity duration-500 ease-out" />
+            <DialogContent className="sm:max-w-md fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-lg z-50">
+              <DialogHeader className="text-left mt-4">
+                <DialogTitle className="font-bold text-xl">How To Play</DialogTitle>
+                <DialogDescription className="">
+                  <h3 className="font-bold">Guess the Wordle in 6 tries.</h3>
 
+                  <ul className="mt-4">
+                    <li className="list-disc ml-4">Each guess must be a valid 5-letter word.</li>
+                    <li className="list-disc ml-4">The color of the tiles will change to show how close your guess was to the word.</li>
+                  </ul>
 
-       
+                  <div className="mt-4">
+                    <p className="font-bold">Examples</p>
+
+                    <div className="flex">
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5 bg-lime-600 text-white">W</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5">O</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5">R</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5">D</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5">Y</span>
+                    </div>
+                    <p><span className="font-bold">W</span> is in the word and in the correct spot.</p>
+
+                    <div className="flex mt-4">
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5 ">L</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5 bg-yellow-500 text-white">I</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5">G</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5">H</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5">T</span>
+                    </div>
+                    <p><span className="font-bold">I</span> is in the word but in the wrong spot.</p>
+
+                    <div className="flex mt-4">
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5 ">R</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5">O</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5">G</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5 bg-slate-400 text-white">U</span>
+                      <span className="w-7 text-center text-xl font-bold mr-2 border border-black p-0.5">E</span>
+                    </div>
+                    <p><span className="font-bold">U</span> is not in the word in any spot.</p>
+                  </div>
+                </DialogDescription>
+              </DialogHeader>
+            </DialogContent>
+          </Dialog>
+          </div>
+
+        </div>
       </main>
+      
     </div>
   );
 }
